@@ -1,0 +1,21 @@
+{
+  "name": "grunt-bower-angular-demo",
+  "version": "0.0.0",
+  "homepage": "https://github.com/freewind/grunt-bower-angular-demo",
+  "authors": [
+    "Peng Li <nowind_lee@qq.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angularjs": "~1.2.20",
+    "jquery": "~2.1.1",
+    "requirejs": "~2.1.14"
+  }
+}
