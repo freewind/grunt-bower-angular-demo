@@ -1,3 +1,3 @@
-function hello() {
-	alert("oh, hello ~");
-}
+  function hello() {
+    alert("oh, hello ~");
+  }

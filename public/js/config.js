@@ -4,7 +4,8 @@ requirejs.config({
     app: 'app',
     hello: 'hello',
     jquery: 'lib/jquery/jquery',
-    angular: 'lib/angularjs/angular'
+    angular: 'lib/angularjs/angular',
+    'app.controllers': 'controllers'
   },
   shim: {
     angular : { exports : 'angular'},
@@ -17,6 +18,4 @@ requirejs.config({
   }
 });
 
-requirejs(['app', 'hello'], function(app, hello) {
-  hello();
-});
+requirejs(['app']);
