@@ -16,7 +16,9 @@
     "karma": "^0.12.19",
     "karma-chrome-launcher": "^0.1.4",
     "karma-ie-launcher": "^0.1.5",
-    "karma-jasmine": "^0.1.5"
+    "karma-jasmine": "^0.1.5",
+    "karma-requirejs": "^0.2.2",
+    "requirejs": "^2.1.14"
   },
   "scripts": {
     "start": "node_modules/http-server/bin/http-server ."
