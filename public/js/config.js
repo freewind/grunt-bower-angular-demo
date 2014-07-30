@@ -3,6 +3,7 @@ requirejs.config({
   paths: {
     app: 'app',
     hello: 'hello',
+    hello2: 'hello2',
     jquery: 'lib/jquery/jquery',
     angular: 'lib/angularjs/angular',
     'app.controllers': 'controllers'

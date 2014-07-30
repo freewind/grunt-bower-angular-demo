@@ -1,7 +1,9 @@
-describe('hello', function() {
+define(['hello'], function(hello) {
+  describe('hello', function() {
 
     it('hello should be true', function() {
-      expect(true).toBe(true);
+      expect(hello()).toBe("hello, world");
     });
 
+  });
 });
