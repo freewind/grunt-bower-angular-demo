@@ -21,12 +21,17 @@ require.config({
     hello: 'public/js/hello',
     hello2: 'public/js/hello2',
     jquery: 'public/js/lib/jquery/jquery',
-    angular: 'public/js/lib/angularjs/angular',
+    angular: 'public/js/lib/angular/angular',
+    'angularMocks': 'public/js/lib/angular-mocks/angular-mocks',
     'app.controllers': 'public/js/controllers'
   },
   shim: {
     angular : { exports : 'angular'},
-    hello : { exports: 'hello' }
+    hello : { exports: 'hello' },
+    'angularMocks': {
+			deps:['angular'],
+			'exports':'angular.mock'
+		}
   },
   priority: ["angular"],
   map: {
