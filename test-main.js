@@ -14,7 +14,25 @@ Object.keys(window.__karma__.files).forEach(function(file) {
 
 require.config({
   // Karma serves files under /base, which is the basePath from your config file
-  baseUrl: '/base',
+  baseUrl: '/base/',
+
+  paths: {
+    app: 'public/js/app',
+    hello: 'public/js/hello',
+    hello2: 'public/js/hello2',
+    jquery: 'public/js/lib/jquery/jquery',
+    angular: 'public/js/lib/angularjs/angular',
+    'app.controllers': 'public/js/controllers'
+  },
+  shim: {
+    angular : { exports : 'angular'},
+    hello : { exports: 'hello' }
+  },
+  priority: ["angular"],
+  map: {
+    '*': { 'jquery': 'jquery-private'},
+    'jquery-private': { 'jquery': 'jquery'}
+  },
 
   // dynamically load all test files
   deps: allTestFiles,
