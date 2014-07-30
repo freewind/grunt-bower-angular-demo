@@ -74,9 +74,9 @@ module.exports = function(grunt) {
           targetDir: './public/js/lib',
           layout: 'byComponent',
           install: true,
-          verbose: false,
-          cleanTargetDir: false,
-          cleanBowerDir: false,
+          verbose: true,
+          cleanTargetDir: true,
+          cleanBowerDir: true,
           bowerOptions: {}
         }
       }
