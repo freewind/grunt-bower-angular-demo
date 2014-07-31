@@ -80,6 +80,18 @@ module.exports = function(grunt) {
           bowerOptions: {}
         }
       }
+    },
+    'http-server': {
+        dev: {
+            root: "./",
+            port: 8282,
+            host: "127.0.0.1",
+            cache: 10000,
+            showDir : true,
+            autoIndex: true,
+            defaultExt: "html",
+            runInBackground: true
+        }
     }
   });
 
@@ -90,6 +102,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-bower-task');
+  grunt.loadNpmTasks('grunt-http-server');
 
   // Default task.
   grunt.registerTask('default', ['jshint', 'qunit', 'concat', 'uglify']);
