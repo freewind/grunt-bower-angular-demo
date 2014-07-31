@@ -1,6 +1,8 @@
 /*global module:false*/
 module.exports = function(grunt) {
 
+  var protractorDir = 'node_modules/protractor/bin/';
+
   // Project configuration.
   grunt.initConfig({
     // Metadata.
@@ -92,6 +94,43 @@ module.exports = function(grunt) {
             defaultExt: "html",
             runInBackground: true
         }
+    },
+    protractor_webdriver: {
+      alive: {
+        options: {
+          path: protractorDir,
+          keepAlive: true
+        }
+      },
+      dead: {
+        options: {
+          path: protractorDir
+        }
+      }
+    },
+    protractor: {
+      options: {
+        configFile: "node_modules/protractor/referenceConf.js", // Default config file
+        keepAlive: false, // If false, the grunt process stops when the test fails.
+        noColor: false, // If true, protractor will not use colors in its output.
+        args: {
+          // Arguments passed to the command
+        }
+      },
+      test: {
+        options: {
+          configFile: "test/protractor-conf.js", // Target-specific config file
+          args: {} // Target-specific arguments
+        }
+      },
+    },
+    shell: {
+      protractor: {
+        options: {
+          stdout: true
+        },
+        command: protractorDir + 'webdriver-manager update --standalone --chrome'
+      }
     }
   });
 
@@ -103,8 +142,15 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-bower-task');
   grunt.loadNpmTasks('grunt-http-server');
+  grunt.loadNpmTasks('grunt-protractor-runner');
+  grunt.loadNpmTasks('grunt-protractor-webdriver');
+  grunt.loadNpmTasks('grunt-shell');
 
   // Default task.
   grunt.registerTask('default', ['jshint', 'qunit', 'concat', 'uglify']);
-
+  grunt.registerTask('e2e-test', [
+    'http-server', 
+    'shell:protractor', 
+    'protractor_webdriver:alive',
+    'protractor:test']);
 };
