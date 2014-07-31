@@ -13,6 +13,7 @@
     "grunt-contrib-uglify": "~0.5.0",
     "grunt-contrib-watch": "~0.6.1",
     "grunt-http-server": "0.0.5",
+    "grunt-karma": "^0.8.3",
     "grunt-protractor-runner": "^1.1.0",
     "grunt-protractor-webdriver": "^0.1.8",
     "grunt-shell": "^0.7.0",

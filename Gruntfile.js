@@ -131,6 +131,11 @@ module.exports = function(grunt) {
         },
         command: protractorDir + 'webdriver-manager update --standalone --chrome'
       }
+    },
+    karma: {
+      unit: {
+        configFile: 'karma.conf.js'
+      }
     }
   });
 
@@ -145,9 +150,11 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-protractor-runner');
   grunt.loadNpmTasks('grunt-protractor-webdriver');
   grunt.loadNpmTasks('grunt-shell');
+  grunt.loadNpmTasks('grunt-karma');
 
   // Default task.
   grunt.registerTask('default', ['jshint', 'qunit', 'concat', 'uglify']);
+  grunt.registerTask('unit-test', ['karma:unit']);
   grunt.registerTask('e2e-test', [
     'http-server', 
     'shell:protractor', 
