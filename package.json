@@ -21,6 +21,8 @@
     "requirejs": "^2.1.14"
   },
   "scripts": {
-    "start": "node_modules/http-server/bin/http-server ."
+    "start": "node_modules/http-server/bin/http-server .",
+    "unit-test": "karma start karma.conf.js",
+    "e2e-test": "webdriver-manager start && npm start && protractor test/protractor-conf.js"
   }
 }
