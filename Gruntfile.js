@@ -124,17 +124,43 @@ module.exports = function(grunt) {
         }
       },
     },
+    karma: {
+      unit: {
+        configFile: 'karma.conf.js'
+      }
+    },
     shell: {
       protractor: {
         options: {
           stdout: true
         },
         command: protractorDir + 'webdriver-manager update --standalone --chrome'
+      },
+      server: {
+        options: {
+          async: true,
+          stdout: true,
+          failOnError: true
+        },
+        command: './node_modules/http-server/bin/http-server . -p 8899'
+      },
+      ls: {
+        options: {
+          stdout: true
+        },
+        command: 'ls'
       }
     },
-    karma: {
-      unit: {
-        configFile: 'karma.conf.js'
+    waitServer: {
+      server: {
+        options: {
+          url: 'http://localhost:8899',
+          fail: function () {console.error('the server had not start'); },
+          timeout: 20 * 1000,
+          isforce: false,
+          interval: 1000,
+          print: true
+        }
       }
     }
   });
@@ -149,8 +175,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-http-server');
   grunt.loadNpmTasks('grunt-protractor-runner');
   grunt.loadNpmTasks('grunt-protractor-webdriver');
-  grunt.loadNpmTasks('grunt-shell');
   grunt.loadNpmTasks('grunt-karma');
+  grunt.loadNpmTasks('grunt-shell-spawn');
+  grunt.loadNpmTasks('grunt-wait-server');
 
   // Default task.
   grunt.registerTask('default', ['jshint', 'qunit', 'concat', 'uglify']);
@@ -160,4 +187,5 @@ module.exports = function(grunt) {
     'shell:protractor', 
     'protractor_webdriver:alive',
     'protractor:test']);
+  grunt.registerTask('extern-server', ['shell:server', 'waitServer:server', 'shell:ls']);
 };

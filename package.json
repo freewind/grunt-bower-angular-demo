@@ -17,6 +17,8 @@
     "grunt-protractor-runner": "^1.1.0",
     "grunt-protractor-webdriver": "^0.1.8",
     "grunt-shell": "^0.7.0",
+    "grunt-shell-spawn": "^0.3.0",
+    "grunt-wait-server": "^0.1.2",
     "http-server": "^0.6.1",
     "karma": "^0.12.19",
     "karma-chrome-launcher": "^0.1.4",
