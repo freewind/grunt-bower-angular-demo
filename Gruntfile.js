@@ -136,13 +136,22 @@ module.exports = function(grunt) {
         },
         command: protractorDir + 'webdriver-manager update --standalone --chrome'
       },
-      server: {
+      serverForTesting: {
         options: {
           async: true,
           stdout: true,
           failOnError: true
         },
         command: './node_modules/http-server/bin/http-server . -p 8899'
+      },
+      server: {
+        options: {
+          stdout: true,
+          async: false,
+          failOnError: true,
+          cache: 0
+        },
+        command: './node_modules/http-server/bin/http-server . -p 8900'
       },
       ls: {
         options: {
@@ -182,10 +191,11 @@ module.exports = function(grunt) {
   // Default task.
   grunt.registerTask('default', ['jshint', 'qunit', 'concat', 'uglify']);
   grunt.registerTask('unit-test', ['karma:unit']);
+  grunt.registerTask('server', ['shell:server']);
   grunt.registerTask('e2e-test', [
     'http-server', 
     'shell:protractor', 
     'protractor_webdriver:alive',
     'protractor:test']);
-  grunt.registerTask('extern-server', ['shell:server', 'waitServer:server', 'shell:ls']);
+  grunt.registerTask('extern-server', ['shell:serverForTesting', 'waitServer:server', 'shell:ls']);
 };
