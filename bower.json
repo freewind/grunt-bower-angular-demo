@@ -17,6 +17,10 @@
     "angularjs": "~1.2.20",
     "jquery": "~2.1.1",
     "requirejs": "~2.1.14",
-    "angular-mocks": "~1.2.21"
+    "angular-mocks": "~1.2.21",
+    "requirejs-plugins": "~1.0.2"
+  },
+  "devDependencies": {
+    "requirejs-text": "~2.0.12"
   }
 }
